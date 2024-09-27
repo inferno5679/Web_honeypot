@@ -14,7 +14,7 @@ funnel_logger.addHandler(funnel_handler)
 
 # Emulated Shell - Arpan
 
-# SSH-server + Sockets - wamiq
+# SSH-server + Sockets - Sureshkumar + wamiq
 
 class Server(paramiko.ServerInterface):
     
