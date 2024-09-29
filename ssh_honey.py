@@ -18,7 +18,7 @@ funnel_logger.addHandler(funnel_handler)
 
 class Server(paramiko.ServerInterface):
     
-    def __init__(self, client_ip, input_Username=None, input_Password=None):
+    def __init__(self, client_ip, input_username=None, input_password=None):
         self.client = client_ip
         self.input_username = input_username
         self.input_password = input_password
