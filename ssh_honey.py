@@ -1,7 +1,7 @@
 # libraries
 import logging
 from logging.handlers import RotatingFileHandler
-
+import paramiko
 # Logging
 
 logging_format = logging.Formatter('%(message)s')
