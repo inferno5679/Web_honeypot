@@ -2,6 +2,7 @@
 import logging
 from logging.handlers import RotatingFileHandler
 import paramiko
+import socket
 # Logging
 
 logging_format = logging.Formatter('%(message)s')
@@ -19,6 +20,37 @@ creds_handler.setFormatter(logging_format)
 creds_logger.addHandler(creds_handler)
 
 # Emulated Shell - Arpan
+def emulated_shell(channel,client_ip):
+    channel.send(b'corporate-jumpbox2$') # $ indicates that user has standard permissions 
+    command = b""
+    while True:
+        char = channel.recv(1)
+        channel.send(char)
+
+        if not char:
+            channel.close()
+
+        command += char
+    
+        if char == b'\r':
+            if command.strip() == b'exit':
+                response = b'\n GoodBye'
+                channel.close()
+            elif command.strip() == 'pwd':
+                respnse = b'/usr/local/' + b'\r\n'
+            elif command.strip() == b'whoami':
+                respnse = b'\n' + b'user1' + b'\r\n'
+            elif command.strip() == b'ls':
+                respnse = b'\n' + b'jumbox1.conf' + b'\r\n'
+            elif command.strip() == b'cat jumpbox1.conf':
+                respnse = b'\n' + b'go to google.com' + b'\r\n'
+            else:
+                respnse = b'\n' + bytes(command.strip()) + b'\r\n'
+        
+        
+        channel.send(response)
+        channel.send(b"corporate-jumpbpx2$ ")
+        command = b""
 
 # SSH-server + Sockets - Sureshkumar + wamiq
 
@@ -48,7 +80,7 @@ class Server(paramiko.ServerInterface):
         self.event.set()
         return True
     
-    #making naother mode
+    #making another mode
     def check_channel_pty_request(self, channel, term, width, height, pixelwidth, pixelheight, modes):
         return True
     
