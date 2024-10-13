@@ -1,3 +1,5 @@
 audits.log
 cmd_audits.log
 HTTP_audits.log
+api.conf
+webHoney copy.py

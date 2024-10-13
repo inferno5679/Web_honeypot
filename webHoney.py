@@ -4,6 +4,8 @@
 import logging 
 from logging.handlers import RotatingFileHandler
 from flask import Flask,render_template,redirect,request,url_for
+import requests
+import ipaddress
 
 # Logging Format
 logging_format = logging.Formatter('%(asctime)s %(message)s')
@@ -31,8 +33,12 @@ def web_honeypot(input_username="admin",input_password="password"):
         
         ip_address = request.remote_addr
 
-        funnel_logger.info(f"Client with IP Address: {ip_address} entered username {username}, Password {password}")
+        if is_private_ip(ip_address):
+            location_info = "Private Network"
+        else:
+            location_info = get_location(ip_address)
 
+        funnel_logger.info(f"Client with IP Address: {ip_address} (Location: {location_info}) entered username {username}, Password {password}")
         if username == input_username and password == input_password:
             return "Welcome"
         else:
@@ -40,6 +46,21 @@ def web_honeypot(input_username="admin",input_password="password"):
         
     return app
 
+def is_private_ip(ip):
+    try:
+        return ipaddress.ip_address(ip).is_private
+    except ValueError:
+        return False
+
+def get_location(ip):
+    token = "your_api_token"
+    try:
+        response = requests.get(f"https://ipinfo.io/{ip}?token={token}")
+        data = response.json()
+        location = data.get('city', 'Unknown City') + ", " + data.get('region', 'Unknown Region') + ", " + data.get('country', 'Unknown Country')
+        return location
+    except Exception as e:
+        return f"Unable to get location: {str(e)}"
 
 def run_web_honeypot(input_username="admin",input_password="password"):
     run_web_pot = web_honeypot(input_username,input_password)
