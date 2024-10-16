@@ -41,19 +41,19 @@ def emulated_shell(channel,client_ip):
                 response = b'\n GoodBye'
                 channel.close()
             elif command.strip() == 'pwd':
-                respnse = b'/usr/local/' + b'\r\n'
+                response = b'/usr/local/' + b'\r\n'
                 creds_logger.info(f'Command {command.strip()}' + 'executed by ' + f'{client_ip}')
             elif command.strip() == b'whoami':
-                respnse = b'\n' + b'user1' + b'\r\n'
+                response = b'\n' + b'user1' + b'\r\n'
                 creds_logger.info(f'Command {command.strip()}' + 'executed by ' + f'{client_ip}')
             elif command.strip() == b'ls':
-                respnse = b'\n' + b'jumbox1.conf' + b'\r\n'
+                response = b'\n' + b'jumbox1.conf' + b'\r\n'
                 creds_logger.info(f'Command {command.strip()}' + 'executed by ' + f'{client_ip}')
             elif command.strip() == b'cat jumpbox1.conf':
-                respnse = b'\n' + b'go to google.com' + b'\r\n'
+                response = b'\n' + b'go to google.com' + b'\r\n'
                 creds_logger.info(f'Command {command.strip()}' + 'executed by ' + f'{client_ip}')
             else:
-                respnse = b'\n' + bytes(command.strip()) + b'\r\n'
+                response = b'\n' + bytes(command.strip()) + b'\r\n'
                 creds_logger.info(f'Command {command.strip()}' + 'executed by ' + f'{client_ip}')
             channel.send(response)
             channel.send(b"corporate-jumpbpx2$ ")
