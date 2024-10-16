@@ -5,3 +5,4 @@ api.conf
 webHoney copy.py
 server.key
 server.key.pub
+__pycache__
