@@ -65,7 +65,7 @@ class Server(paramiko.ServerInterface):
     
     def __init__(self, client_ip, input_username=None, input_password=None):
         self.event = threading.Event()
-        self.client = client_ip
+        self.client_ip = client_ip
         self.input_username = input_username
         self.input_password = input_password
     
@@ -73,7 +73,7 @@ class Server(paramiko.ServerInterface):
         if kind == 'session':
             return paramiko.OPEN_SUCCEEDED
     
-    def get_allowed_auths(self):
+    def get_allowed_auths(self,username):
         return 'password'    
     
     def check_auth_password(self, username, password):
@@ -85,7 +85,7 @@ class Server(paramiko.ServerInterface):
             else:
                 return paramiko.AUTH_FAILED
         else:
-            return paramiko.AUTH_SUCCESSFULL
+            return paramiko.AUTH_SUCCESSFUL
 
     def check_channel_shell_request(self, channel):
         self.event.set()
@@ -100,13 +100,13 @@ class Server(paramiko.ServerInterface):
         return True
     
 def client_handle(client, addr, username, password):
-        client_ip = addr(0)
+        
+        funnel_logger.info(f'client: {client}' + f'addr {addr} ' + f'username {username}' + f"password {password}")
+        client_ip = addr[0]
         print(f"{client_ip} has connected to the server. ")
         
         
         try:
-
-
             transport = paramiko.Transport(client)
             transport.local_version = SSH_BANNER
             server = Server(client_ip=client_ip, input_username=username, input_password=password)
@@ -133,9 +133,6 @@ def client_handle(client, addr, username, password):
                 print(error)
                 print("!!! Error !!!")
             client.close()
-
-
-
 
 # Provision based honeypot - wamiq 
 
