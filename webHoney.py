@@ -88,5 +88,5 @@ def run_web_honeypot(input_username="admin", input_password="password"):
 
     return run_web_pot
 
-if __name__ == "__main__":
-    run_web_honeypot("admin", "password")
+# if __name__ == "__main__":
+#     run_web_honeypot("admin", "password")

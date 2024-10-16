@@ -30,7 +30,14 @@ if __name__ == '__main__':
             
         elif args.http:
             print("[-] Running HTTP WordPress HoneyPot....")
-            
+
+            if not args.username:
+                args.username = "admin"
+                
+            if not args.password:
+                args.password = "password"
+            print(f"Port: {args.port} Username: {args.username}, Password: {args.password}")
+            run_web_honeypot(args.username,args.password)
             pass
         else:
             print("[!] Choose a honeypot type (SSH --ssh) or (HTTP --http)")
