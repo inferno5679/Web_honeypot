@@ -1,0 +1,170 @@
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.7;
+  color: #333;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar Styles */
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #f8f9fa !important;
+}
+
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+  padding-right: 20px;
+  color: #f8f9fa !important;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #00c2ff !important;
+}
+
+/* Header Styles */
+header {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    no-repeat center center/cover;
+  height: 350px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+header h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  animation: slideInDown 1.5s ease;
+}
+
+header p {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+/* About Section Styles */
+#about {
+  background-color: white;
+  padding: 50px 0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+#about:hover {
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+#about h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  position: relative;
+  text-align: center;
+}
+
+#about h2::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: #00c2ff;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#about ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#about ul li {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 25px;
+}
+
+#about ul li::before {
+  content: "\f00c"; /* FontAwesome checkmark */
+  font-family: "FontAwesome";
+  position: absolute;
+  left: 0;
+  color: #00c2ff;
+  font-size: 1.5rem;
+}
+
+#about p {
+  font-size: 1.15rem;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #222;
+  color: #f8f9fa;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  header {
+    height: 250px;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  header p {
+    font-size: 1.1rem;
+  }
+
+  #about {
+    margin: 10px;
+    padding: 30px;
+  }
+
+  #about h2 {
+    font-size: 2rem;
+  }
+}
