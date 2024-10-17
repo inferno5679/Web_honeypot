@@ -63,7 +63,7 @@ def web_honeypot(input_username="admin", input_password="password"):
                            f"with username: {username}, password: {password}")
 
         if username == input_username and password == input_password:
-            return "Welcome"
+            return render_template("index.html")
         else:
             flash("Invalid credentials")
             return redirect('/')
