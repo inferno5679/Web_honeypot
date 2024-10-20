@@ -8,11 +8,15 @@ body {
   padding: 0;
 }
 
-/* Navbar Styles */
 .navbar-brand {
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+  color: linear-gradient(to right, #ffcc00, #ff6600);
   font-size: 1.8rem;
-  font-weight: bold;
-  color: #f8f9fa !important;
+}
+
+.navbar-brand i {
+  margin-right: 8px;
 }
 
 .navbar-nav .nav-link {

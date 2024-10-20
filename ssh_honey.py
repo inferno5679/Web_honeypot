@@ -7,7 +7,6 @@ import threading
 # Constants
 logging_format = logging.Formatter('%(message)s')
 SSH_BANNER = "SSH-2.0-MySSHServer_1.0"
-#host_key = 'server.key' (keep it secret by not posting this part anywhere)
 host_key = paramiko.RSAKey(filename='server.key')
 
 #Loggers & Logging Files
@@ -56,7 +55,7 @@ def emulated_shell(channel,client_ip):
                 response = b'\n' + bytes(command.strip()) + b'\r\n'
                 creds_logger.info(f'Command {command.strip()}' + 'executed by ' + f'{client_ip}')
             channel.send(response)
-            channel.send(b"corporate-jumpbpx2$ ")
+            channel.send(b"corporate-jumpbox2$")
             command = b""
 
 # SSH-server + Sockets - Sureshkumar + wamiq
@@ -154,5 +153,3 @@ def honeypot(address, port, username, password):
         
         except Exception as error:
             print(error)
-
-honeypot('127.0.0.1', 2223, username=None, password=None )
