@@ -68,7 +68,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           {% endfor %}
-        <img src="https://static.vecteezy.com/system/resources/thumbnails/020/975/579/small/wordpress-logo-wordpress-icon-transparent-free-png.png" alt="WordPress Logo">
+        <img src="{{ url_for('static',filename='logo_final.png') }}" alt="WordPress Logo">
         <form action="/wb-admin-login" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
