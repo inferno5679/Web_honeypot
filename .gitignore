@@ -5,4 +5,6 @@ api.conf
 webHoney copy.py
 server.key
 server.key.pub
+.DS_Store
+static/.DS_Store
 __pycache__
