@@ -1,5 +1,7 @@
+<p align="center">
+  <img src="/static/Logo_TrapDoor.png" alt="HONEPY Logo" style="width: 375px;">
+</p>
 
-# Trap Door
 
 Trap Door is a modular, graphical honeypot designed to capture IP addresses, usernames, passwords, and commands from various protocols, currently supporting SSH and HTTP. Written in Python, Trap Door provides a controlled environment for monitoring network intrusions, making it ideal for studying attacker behavior.
 
